@@ -1,1 +1,1 @@
-![not-by-ai](./assets/not.png)
+![not-by-ai](commerce/assets/not.png)
