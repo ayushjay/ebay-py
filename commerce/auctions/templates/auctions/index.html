@@ -3,5 +3,18 @@
 {% block body %}
     <h2>Active Listings</h2>
 
-    TODO
+    {% for artifact in context %}
+    <li>
+        {{ artifact.id }}
+        {{ artifact.title }}
+        {{ artifact.description }}
+        {{ artifact.initial_price }}
+        {{ artifact.bid }}
+        {{ artifact.auction_image }}
+        {{ artifact.category }}
+        {{ artifact.comments }}
+    </li>
+    {% endfor %}
+
+  <a href="{% url  'new'   %}"> Add new Auction! </a> 
 {% endblock %}

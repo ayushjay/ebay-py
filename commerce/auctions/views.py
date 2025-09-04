@@ -4,11 +4,30 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 
-from .models import User
-
+from .models import User, BidModel, AuctionListingModel, CommentModel
+from .forms import AuctionForm
 
 def index(request):
-    return render(request, "auctions/index.html")
+    
+    return render(request, "auctions/index.html",{
+        "context": AuctionListingModel.objects.all()
+    })
+
+def create_new_listing(request):
+        form = AuctionForm()
+        # if form.is_valid():
+        return render(request, "auctions/add_auction_listing.html", {
+                "form":form,
+                })
+        
+            
+
+
+
+
+
+
+
 
 
 def login_view(request):
