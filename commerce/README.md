@@ -1,1 +1,0 @@
-![not-by-ai](assets/not.png)
