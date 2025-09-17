@@ -13,16 +13,31 @@ def index(request):
     return render(request, "auctions/index.html",{
         "context": AuctionListingModel.objects.all()
     })
+
 @login_required(login_url="/login")
 def create_new_listing(request):
-        form = AuctionForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return render(request, "auctions/index.html",{
-                "context": AuctionListingModel.objects.all()
-    })
+        if request.method == "POST":
+            form = AuctionForm(request.POST)
+            if form.is_valid():
+                # title = form.cleaned_data["title"]
+                # description= form.cleaned_data["description"]
+                # initial_price = form.cleaned_data["initial_price"]
+                # auction_image= form.cleaned_data["auction_image"]
+                # category= form.cleaned_data["category"]
+
+                # # MOST IMP LINE I MISSED
+                      
+                # AuctionListingModel.objects.create(title=title,  description= description, initial_price= initial_price, auction_image=auction_image,category=category)
+                form.save()
+                return render(request, "auctions/index.html",{
+                    "context": AuctionListingModel.objects.all()
+        })
         else:
-            return render(request, "auctions/add_auction_listing.html", {
+            # return render(request, "auctions/add_auction_listing.html", {
+            #     "form":form,
+            #     })
+            form = AuctionForm()
+        return render(request, "auctions/add_auction_listing.html", {
                 "form":form,
                 })
 

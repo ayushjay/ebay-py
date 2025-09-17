@@ -8,8 +8,7 @@
 - [ ] **Categories**: Users should be able to categorize listings.
 
 ## TODO Features
-
-- [ ]
+- [ ] "Please login to view" message displays when user tries to access the add listing function
 
   
 ![not-by-ai](commerce/assets/not.png)
