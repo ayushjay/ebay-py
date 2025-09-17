@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login, logout
+# from django.contrib import messages
 from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
+from django.contrib.auth.decorators import login_required
 from .models import User, BidModel, AuctionListingModel, CommentModel
 from .forms import AuctionForm
 
@@ -12,21 +13,18 @@ def index(request):
     return render(request, "auctions/index.html",{
         "context": AuctionListingModel.objects.all()
     })
-
+@login_required(login_url="/login")
 def create_new_listing(request):
-        form = AuctionForm()
-        # if form.is_valid():
-        return render(request, "auctions/add_auction_listing.html", {
+        form = AuctionForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, "auctions/index.html",{
+                "context": AuctionListingModel.objects.all()
+    })
+        else:
+            return render(request, "auctions/add_auction_listing.html", {
                 "form":form,
                 })
-        
-            
-
-
-
-
-
-
 
 
 

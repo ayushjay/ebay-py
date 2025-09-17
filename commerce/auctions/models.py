@@ -7,7 +7,7 @@ class User(AbstractUser):
 
 
 class CommentModel(models.Model):
-    comment_on_auction = models.TextField(max_length=200)
+    comment_on_auction = models.TextField(max_length=200, null=True)
 
     def __str__(self):
         return f"{self.id}: {self.comment_on_auction}"
@@ -29,7 +29,7 @@ class AuctionListingModel(models.Model):
     sold = models.BooleanField(default=False)
     auction_image = models.URLField(max_length=200)
     category = models.CharField(max_length=30)
-    comments = models.ForeignKey(CommentModel, on_delete=models.CASCADE, related_name="comments")
+    comments = models.ForeignKey(CommentModel, null=True,on_delete=models.SET_NULL, related_name="comments")
 
     def __str__(self):
         return f"{self.id}: {self.title}"
