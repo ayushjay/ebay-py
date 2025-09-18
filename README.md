@@ -10,7 +10,7 @@
 
 ## TODO
 - [ ] "Please login to view" message displays when user tries to access the add listing function
-- [ ] Add Frontend aligned display in active listing
+- [ ] Add Frontend aligned display in active listing/product page
 
   
 ![not-by-ai](commerce/assets/not.png)
