@@ -1,0 +1,25 @@
+{% extends "auctions/layout.html" %}
+
+
+
+{% block body %}
+    <img src="{{ product.auction_image }} " alt="{{ product.title }} " width="200" height="250">
+        <h3>{{ product.title }}</h3>
+       
+       <h6 class="flex-container-auction-ele" ><strong>Price:</strong> ₹ {{ prodcut.initial_price }}
+             {{ product.description }}
+
+        <p>category: {{ product.category }}</p> 
+
+        <p>Comments made:</p>
+        <li>
+            {{ product.comments }}
+        </li>
+
+        
+        
+
+
+
+    <a href="{% url 'index' %}">Go Home</a>
+{% endblock %}

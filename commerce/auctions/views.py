@@ -11,11 +11,18 @@ from .forms import AuctionForm
 def index(request):
     
     return render(request, "auctions/index.html",{
-        "context": AuctionListingModel.objects.all()
+        "context": AuctionListingModel.objects.all(),
+    })
+
+def product(request, product_id):
+    product = AuctionListingModel.objects.get(id=product_id)
+    return render(request, "auctions/product_listing.html", {
+        "product":product,
     })
 
 @login_required(login_url="/login")
 def create_new_listing(request):
+        
         if request.method == "POST":
             form = AuctionForm(request.POST)
             if form.is_valid():
@@ -30,7 +37,7 @@ def create_new_listing(request):
                 # AuctionListingModel.objects.create(title=title,  description= description, initial_price= initial_price, auction_image=auction_image,category=category)
                 form.save()
                 return render(request, "auctions/index.html",{
-                    "context": AuctionListingModel.objects.all()
+                    "context": AuctionListingModel.objects.all(),          
         })
         else:
             # return render(request, "auctions/add_auction_listing.html", {
@@ -41,7 +48,12 @@ def create_new_listing(request):
                 "form":form,
                 })
 
-
+""" @login_required(login_url="/login")
+def product_listing_view(request,product_id):
+    product = AuctionListingModel.objects.get(id=product_id)
+    return render(request,"auctions/product_listing.html",{
+         "product":product,}) """
+       
 
 def login_view(request):
     if request.method == "POST":
