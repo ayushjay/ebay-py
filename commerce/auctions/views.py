@@ -5,7 +5,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from .models import User, BidModel, AuctionListingModel, CommentModel
+from .models import User, BidModel, AuctionListingModel, CommentModel, WatchListModel
 from .forms import AuctionForm
 
 def index(request):
@@ -57,8 +57,14 @@ def product_listing_view(request,product_id):
 
 
 @login_required(login_url="/login")   
-def WatchlistView(request):
-    pass
+def add_to_watchlist(request, product_id):
+    if request.method == "POST":
+        product = AuctionListingModel.objects.get(id=product_id)
+        watchlist_id = int(request.POST["auctions_on_watchlist"])
+
+    # watchlist = WatchListModel.objects.all()
+    
+
 
 
 

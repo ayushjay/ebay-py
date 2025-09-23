@@ -3,7 +3,15 @@
 
 
 {% block body %}
+<div>
+   
     <img src="{{ product.auction_image }} " alt="{{ product.title }} " width="200" height="250">
+    <a href="{% url 'add_to_watchlist' product.id   %}"><button type="button">Watchlist</button></a> 
+
+   
+     </div>
+
+
         <h3>{{ product.title }}</h3>
        
        <h6 class="flex-container-auction-ele" ><strong>Price:</strong> ₹ {{ product.initial_price }}

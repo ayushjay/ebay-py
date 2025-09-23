@@ -1,6 +1,8 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.utils import timezone
+from django.conf import settings
+
 
 
 class User(AbstractUser):
@@ -34,10 +36,18 @@ class AuctionListingModel(models.Model):
     category = models.CharField(max_length=30)
     # default_comment_id = 1 
     comments = models.ForeignKey(CommentModel,null=True, on_delete=models.SET_NULL, related_name="comments")
+    created_at = models.DateTimeField(default=timezone.now())
 
     def __str__(self):
         return f"{self.id}: {self.title}"
+    
 
+class WatchListModel(models.Model):
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+    )
+    auctions_on_watchlist = models.ForeignKey(AuctionListingModel,null=True, on_delete=models.SET_NULL, related_name="auctions_watchlist")
 
 
 
