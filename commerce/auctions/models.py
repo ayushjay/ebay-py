@@ -27,7 +27,7 @@ class BidModel(models.Model):
 class AuctionListingModel(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(max_length=500)
-    initial_price = models.DecimalField(max_digits=6, decimal_places=2, default=0)
+    initial_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     bid = models.ForeignKey(BidModel, null=True,on_delete=models.SET_NULL, related_name="BidModel")
     sold = models.BooleanField(default=False)
     auction_image = models.URLField(max_length=200)

@@ -53,7 +53,14 @@ def product_listing_view(request,product_id):
     product = AuctionListingModel.objects.get(id=product_id)
     return render(request,"auctions/product_listing.html",{
          "product":product,}) """
-       
+
+
+
+@login_required(login_url="/login")   
+def WatchlistView(request):
+    pass
+
+
 
 def login_view(request):
     if request.method == "POST":

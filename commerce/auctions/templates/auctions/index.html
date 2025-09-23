@@ -8,18 +8,18 @@
       <div class="">
         <a href="{% url 'product_index' product.id %}">
 
-          <li>
+      
         <img src="{{ product.auction_image }} " alt="{{ product.title }} " width="200" height="250">
         <h3>{{ product.title }}</h3>
        
        <h6 class="flex-container-auction-ele" ><strong>Price:</strong> ₹ {{ product.initial_price }}
              {{ product.description }}
        </h6>
-    </li>
+
     </a>
      </div>
     {% endfor %}
    
 
-  <a href="{% url  'new'   %}"> Add new Auction! </a> 
+
 {% endblock %}

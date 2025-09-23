@@ -6,12 +6,14 @@
     <img src="{{ product.auction_image }} " alt="{{ product.title }} " width="200" height="250">
         <h3>{{ product.title }}</h3>
        
-       <h6 class="flex-container-auction-ele" ><strong>Price:</strong> ₹ {{ prodcut.initial_price }}
+       <h6 class="flex-container-auction-ele" ><strong>Price:</strong> ₹ {{ product.initial_price }}
+        <div>
              {{ product.description }}
+        </div>
 
-        <p>category: {{ product.category }}</p> 
+        <p><strong>Category: </strong>{{ product.category }}</p> 
 
-        <p>Comments made:</p>
+        <p><strong>Comments made:</strong></p>
         <li>
             {{ product.comments }}
         </li>
